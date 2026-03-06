@@ -3,103 +3,640 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ETL com Gemini AI | Portfólio</title>
+  <title>ETL × Gemini AI — Pipeline Inteligente</title>
   <meta name="description" content="Pipeline ETL inteligente com integração de IA Gemini para processamento avançado de dados.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="etl-styles.css">
 </head>
 <body>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loading-neural"><div class="neural-core"></div><div class="neural-ring neural-ring-1"></div><div class="neural-ring neural-ring-2"></div><div class="neural-ring neural-ring-3"></div></div>
-    <div class="loading-text"><span class="loading-char" style="--i:0">C</span><span class="loading-char" style="--i:1">a</span><span class="loading-char" style="--i:2">r</span><span class="loading-char" style="--i:3">r</span><span class="loading-char" style="--i:4">e</span><span class="loading-char" style="--i:5">g</span><span class="loading-char" style="--i:6">a</span><span class="loading-char" style="--i:7">n</span><span class="loading-char" style="--i:8">d</span><span class="loading-char" style="--i:9">o</span><span class="loading-char" style="--i:10">.</span><span class="loading-char" style="--i:11">.</span><span class="loading-char" style="--i:12">.</span></div>
-    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
-  </div>
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo"><span class="logo-bracket">&lt;</span><span class="logo-text">DS</span><span class="logo-bracket">/&gt;</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#hero" class="nav-link">Home</a></li>
-        <li><a href="index.html#about" class="nav-link">Sobre</a></li>
-        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-        <li><a href="index.html#projects" class="nav-link active">Projetos</a></li>
-        <li><a href="index.html#experience" class="nav-link">Experiência</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contato</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+
+  <!-- Scan Lines Overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+  
+  <!-- Noise Texture -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Floating Data Particles -->
+  <canvas id="dataCanvas" class="data-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-sym">&lt;</span><span class="logo-name">DS</span><span class="logo-sym">/&gt;</span>
+      </a>
+      <div class="nav-breadcrumb">
+        <a href="index.html#projects" class="breadcrumb-link">projetos</a>
+        <span class="breadcrumb-sep">→</span>
+        <span class="breadcrumb-current">etl-dio</span>
+      </div>
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span class="status-text">pipeline: ativo</span>
+      </div>
     </div>
   </nav>
-  <section class="section project-page-hero" id="project-hero">
-    <div class="container">
-      <div class="breadcrumb animate-on-scroll"><a href="index.html#projects">Projetos</a><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">ETL DIO</span></div>
-      <div class="project-page-header animate-on-scroll" data-delay="100">
-        <div class="project-hero-icon">⚙️</div>
-        <h1 class="project-page-title">ETL com Gemini AI</h1>
-        <p class="project-page-subtitle">Pipeline de extração, transformação e carregamento de dados com integração inteligente de IA Gemini para análise avançada</p>
-        <div class="project-page-badges"><span class="badge-python">Python</span><span class="badge-license">MIT</span></div>
-        <div class="project-page-cta"><a href="https://github.com/novasentinel-tech" class="btn btn-primary" target="_blank"><span class="btn-text">Ver no GitHub</span><span class="btn-icon">→</span></a></div>
+
+  <!-- HERO: Live Terminal -->
+  <section class="hero-section" id="hero">
+    <div class="hero-left">
+      <div class="project-label">
+        <span class="label-num">01</span>
+        <span class="label-line"></span>
+        <span class="label-text">PROJETO ETL</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-word title-w1">ETL</span>
+        <span class="title-cross">×</span>
+        <span class="title-word title-w2">GEMINI</span>
+        <br>
+        <span class="title-sub">PIPELINE INTELIGENTE</span>
+      </h1>
+      <p class="hero-desc">
+        45 usuários. 3 estágios. 1 IA. Pipeline de dados com integração
+        Gemini que transforma CSV em insights em Markdown.
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/novasentinel-tech" target="_blank" class="cta-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          Ver Repositório
+        </a>
+        <a href="index.html#projects" class="cta-secondary">← Voltar</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Live Terminal Window -->
+      <div class="terminal-window">
+        <div class="terminal-topbar">
+          <div class="term-dots">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+          </div>
+          <span class="term-title">pipeline — bash</span>
+          <span class="term-badge">LIVE</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python src/iniciador.py</span></div>
+          <div class="term-line term-info" id="tl1"></div>
+          <div class="term-line term-success" id="tl2"></div>
+          <div class="term-line term-warn" id="tl3"></div>
+          <div class="term-line term-info" id="tl4"></div>
+          <div class="term-line term-success" id="tl5"></div>
+          <div class="term-line term-data" id="tl6"></div>
+          <div class="term-line term-success" id="tl7"></div>
+          <div class="term-line term-data" id="tl8"></div>
+          <div class="term-line" id="tl9"></div>
+          <div class="term-line term-bright" id="tl10"></div>
+          <div class="term-cursor" id="termCursor">█</div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="section project-page-content">
-    <div class="container">
-      <div class="project-page-grid animate-on-scroll" data-delay="100">
-        <div class="project-page-visual">
-          <div class="project-detail-image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><div class="placeholder-icon">⚙️</div></div>
+
+  <!-- PIPELINE VISUALIZER -->
+  <section class="pipeline-section" id="pipeline">
+    <div class="section-label">
+      <span class="label-num">02</span>
+      <span class="label-line"></span>
+      <span class="label-text">FLUXO DE DADOS</span>
+    </div>
+    <h2 class="section-title">Pipeline ETL<br><em>ao vivo</em></h2>
+
+    <div class="pipeline-viz">
+      <!-- Stage 1: Extract -->
+      <div class="pipe-stage" data-stage="extract">
+        <div class="stage-header">
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="stage-num">01</div>
+            <div class="stage-name">EXTRACT</div>
+          </div>
+          <div class="stage-status active">
+            <span class="pulse-ring"></span>
+          </div>
         </div>
-        <div class="project-page-details">
-          <div class="project-section">
-            <h2 class="section-subtitle">📋 O Que É</h2>
-            <p>Projeto educacional que demonstra a construção de um pipeline ETL completo integrando a API Gemini AI. Transforma dados brutos em insights inteligentes através de processamento em etapas bem definidas.</p>
+        <div class="stage-content">
+          <div class="stage-metric"><span class="metric-val" data-target="45">0</span><span class="metric-label">usuários</span></div>
+          <div class="stage-metric"><span class="metric-val" data-target="8">0</span><span class="metric-label">campos</span></div>
+        </div>
+        <div class="stage-file">
+          <span class="file-icon">📄</span>
+          <span class="file-name">usuarios.csv</span>
+          <span class="file-size">12.4 KB</span>
+        </div>
+        <div class="data-bar">
+          <div class="data-bar-fill" style="--delay:0.2s; --width: 100%"></div>
+        </div>
+      </div>
+
+      <!-- Arrow Flow -->
+      <div class="pipe-arrow">
+        <div class="arrow-line">
+          <div class="arrow-flow"></div>
+        </div>
+        <span class="arrow-label">pandas</span>
+      </div>
+
+      <!-- Stage 2: Transform -->
+      <div class="pipe-stage" data-stage="transform">
+        <div class="stage-header">
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 2,7 12,12 22,7 12,2"/><polyline points="2,17 12,22 22,17"/><polyline points="2,12 12,17 22,12"/></svg>
           </div>
-          <div class="project-section">
-            <h2 class="section-subtitle">🔄 Estrutura do Projeto</h2>
-            <ul class="feature-list">
-              <li><strong>Extract:</strong> Coleta e leitura de dados de diferentes fontes</li>
-              <li><strong>Transform:</strong> Limpeza, normalização e processamento inteligente</li>
-              <li><strong>Load:</strong> Armazenamento e formatação dos dados processados</li>
-              <li><strong>Intelligence:</strong> Análise aumentada com IA Gemini</li>
-            </ul>
+          <div>
+            <div class="stage-num">02</div>
+            <div class="stage-name">TRANSFORM</div>
           </div>
-          <div class="project-section">
-            <h2 class="section-subtitle">✨ Funcionalidades</h2>
-            <ul class="feature-list">
-              <li>Pipeline ETL modular e extensível</li>
-              <li>Integração com API Gemini para análise inteligente</li>
-              <li>Processamento de múltiplos formatos de dados</li>
-              <li>Geração de relatórios em Markdown</li>
-              <li>Validação automática de dados</li>
-              <li>Logging detalhado de operações</li>
-            </ul>
+          <div class="stage-status processing">
+            <span class="spin-ring"></span>
           </div>
-          <div class="project-section">
-            <h2 class="section-subtitle">🛠️ Tecnologias</h2>
-            <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">Gemini AI</span><span class="tech-tag">Pandas</span><span class="tech-tag">ETL</span><span class="tech-tag">Markdown</span></div>
+        </div>
+        <div class="stage-content">
+          <div class="stage-metric"><span class="metric-val" data-target="45">0</span><span class="metric-label">processados</span></div>
+          <div class="stage-metric"><span class="metric-val" data-target="4">0</span><span class="metric-label">dept.</span></div>
+        </div>
+        <div class="gemini-badge">
+          <div class="gemini-orb"></div>
+          <span>Gemini AI</span>
+        </div>
+        <div class="data-bar">
+          <div class="data-bar-fill" style="--delay:0.8s; --width: 78%"></div>
+        </div>
+      </div>
+
+      <!-- Arrow Flow -->
+      <div class="pipe-arrow">
+        <div class="arrow-line">
+          <div class="arrow-flow"></div>
+        </div>
+        <span class="arrow-label">gemini-api</span>
+      </div>
+
+      <!-- Stage 3: Load -->
+      <div class="pipe-stage" data-stage="load">
+        <div class="stage-header">
+          <div class="stage-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
-          <div class="project-section cta-section">
-            <a href="https://github.com/novasentinel-tech" class="btn btn-primary" target="_blank"><span class="btn-text">Acessar Repositório</span><span class="btn-icon">→</span></a>
-            <a href="index.html#projects" class="btn btn-secondary"><span class="btn-text">Voltar aos Projetos</span><span class="btn-icon">←</span></a>
+          <div>
+            <div class="stage-num">03</div>
+            <div class="stage-name">LOAD</div>
+          </div>
+          <div class="stage-status idle">
+            <span class="idle-dot"></span>
+          </div>
+        </div>
+        <div class="stage-content">
+          <div class="stage-metric"><span class="metric-val" data-target="45">0</span><span class="metric-label">arquivos .md</span></div>
+          <div class="stage-metric"><span class="metric-val" data-target="3">0</span><span class="metric-label">min</span></div>
+        </div>
+        <div class="stage-file">
+          <span class="file-icon">📁</span>
+          <span class="file-name">resumos_markdown/</span>
+          <span class="file-size">87.2 KB</span>
+        </div>
+        <div class="data-bar">
+          <div class="data-bar-fill" style="--delay:1.4s; --width: 55%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE ANATOMY -->
+  <section class="code-section" id="code">
+    <div class="section-label">
+      <span class="label-num">03</span>
+      <span class="label-line"></span>
+      <span class="label-text">ANATOMIA DO CÓDIGO</span>
+    </div>
+
+    <div class="code-grid">
+      <div class="code-map">
+        <h3 class="code-map-title">Estrutura do Projeto</h3>
+        <div class="file-tree" id="fileTree">
+          <div class="tree-root">ETL-CURSO-DIO/</div>
+          <div class="tree-item" data-file="iniciador">
+            <span class="tree-indent">├─</span>
+            <span class="tree-folder">src/</span>
+          </div>
+          <div class="tree-item tree-file selectable active" data-file="iniciador" data-panel="iniciador">
+            <span class="tree-indent">│ ├─</span>
+            <span class="tree-icon">🎬</span>
+            <span>iniciador.py</span>
+            <span class="tree-badge">maestro</span>
+          </div>
+          <div class="tree-item tree-file selectable" data-file="extracao" data-panel="extracao">
+            <span class="tree-indent">│ ├─</span>
+            <span class="tree-icon">📥</span>
+            <span>extracao.py</span>
+            <span class="tree-badge">extract</span>
+          </div>
+          <div class="tree-item tree-file selectable" data-file="transformacao" data-panel="transformacao">
+            <span class="tree-indent">│ ├─</span>
+            <span class="tree-icon">🤖</span>
+            <span>transformacao.py</span>
+            <span class="tree-badge">AI</span>
+          </div>
+          <div class="tree-item tree-file selectable" data-file="carregamento" data-panel="carregamento">
+            <span class="tree-indent">│ └─</span>
+            <span class="tree-icon">💾</span>
+            <span>carregamento.py</span>
+            <span class="tree-badge">load</span>
+          </div>
+          <div class="tree-item">
+            <span class="tree-indent">├─</span>
+            <span class="tree-folder">dados/</span>
+          </div>
+          <div class="tree-item tree-file">
+            <span class="tree-indent">│ └─</span>
+            <span class="tree-icon">📊</span>
+            <span>usuarios.csv</span>
+            <span class="tree-size">12.4KB</span>
+          </div>
+          <div class="tree-item tree-file">
+            <span class="tree-indent">├─</span>
+            <span class="tree-icon">🔒</span>
+            <span>.env</span>
+            <span class="tree-badge warn">secret</span>
+          </div>
+          <div class="tree-item tree-file">
+            <span class="tree-indent">└─</span>
+            <span class="tree-icon">📦</span>
+            <span>requirements.txt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-viewer">
+        <div class="code-tabs">
+          <button class="code-tab active" data-panel="iniciador">iniciador.py</button>
+          <button class="code-tab" data-panel="extracao">extracao.py</button>
+          <button class="code-tab" data-panel="transformacao">transformacao.py</button>
+          <button class="code-tab" data-panel="carregamento">carregamento.py</button>
+        </div>
+        <div class="code-panels">
+          <div class="code-panel active" id="panel-iniciador">
+            <pre class="code-block"><span class="c-comment"># 🎬 iniciador.py — O Maestro da Pipeline</span>
+<span class="c-comment"># Orquestra os 3 estágios em sequência</span>
+
+<span class="c-kw">from</span> extracao <span class="c-kw">import</span> extrair_csv, categorizar_usuarios
+<span class="c-kw">from</span> transformacao <span class="c-kw">import</span> transformar_usuarios
+<span class="c-kw">from</span> carregamento <span class="c-kw">import</span> carregar_em_markdown
+
+<span class="c-kw">def</span> <span class="c-fn">executar_pipeline</span>():
+    <span class="c-str">"""Pipeline ETL completo com Gemini AI"""</span>
+    
+    <span class="c-comment"># ── EXTRACT ───────────────────────────────</span>
+    df = <span class="c-fn">extrair_csv</span>(<span class="c-str">"usuarios.csv"</span>)
+    categorizados = <span class="c-fn">categorizar_usuarios</span>(df)
+    
+    <span class="c-comment"># ── TRANSFORM (Gemini faz a magia aqui) ──</span>
+    transformados = <span class="c-fn">transformar_usuarios</span>(categorizados)
+    
+    <span class="c-comment"># ── LOAD ──────────────────────────────────</span>
+    <span class="c-fn">carregar_em_markdown</span>(transformados)
+    
+    print(<span class="c-str">f"✅ Pipeline completo! {len(transformados)} usuários"</span>)
+
+<span class="c-kw">if</span> __name__ == <span class="c-str">"__main__"</span>:
+    <span class="c-fn">executar_pipeline</span>()</pre>
+          </div>
+          <div class="code-panel" id="panel-extracao">
+            <pre class="code-block"><span class="c-comment"># 📥 extracao.py — Lê e Organiza Dados</span>
+
+<span class="c-kw">import</span> pandas <span class="c-kw">as</span> pd
+<span class="c-kw">from</span> pathlib <span class="c-kw">import</span> Path
+
+<span class="c-kw">def</span> <span class="c-fn">extrair_csv</span>(nome_arquivo: <span class="c-type">str</span>) -> pd.DataFrame:
+    <span class="c-str">"""Extrai dados do CSV e retorna DataFrame"""</span>
+    caminho = Path(<span class="c-str">"../dados"</span>) / nome_arquivo
+    df = pd.<span class="c-fn">read_csv</span>(caminho)
+    print(<span class="c-str">f"[EXTRACT] {len(df)} usuários carregados"</span>)
+    <span class="c-kw">return</span> df
+
+<span class="c-kw">def</span> <span class="c-fn">categorizar_usuarios</span>(df: pd.DataFrame) -> <span class="c-type">dict</span>:
+    <span class="c-str">"""Separa usuários por departamento"""</span>
+    departamentos = df[<span class="c-str">'departamento'</span>].<span class="c-fn">unique</span>()
+    
+    <span class="c-kw">return</span> {
+        dept: df[df[<span class="c-str">'departamento'</span>] == dept].<span class="c-fn">to_dict</span>(<span class="c-str">'records'</span>)
+        <span class="c-kw">for</span> dept <span class="c-kw">in</span> departamentos
+    }</pre>
+          </div>
+          <div class="code-panel" id="panel-transformacao">
+            <pre class="code-block"><span class="c-comment"># 🤖 transformacao.py — Gemini Fazendo Magia</span>
+
+<span class="c-kw">import</span> google.generativeai <span class="c-kw">as</span> genai
+<span class="c-kw">import</span> os
+
+genai.<span class="c-fn">configure</span>(api_key=os.<span class="c-fn">getenv</span>(<span class="c-str">"GEMINI_API_KEY"</span>))
+model = genai.<span class="c-fn">GenerativeModel</span>(<span class="c-str">"gemini-pro"</span>)
+
+<span class="c-kw">def</span> <span class="c-fn">gerar_resumo</span>(usuario: <span class="c-type">dict</span>) -> <span class="c-type">str</span>:
+    <span class="c-str">"""Gemini gera um resumo criativo do usuário"""</span>
+    prompt = <span class="c-str">f"""
+    Crie um resumo descontraído e criativo sobre:
+    Nome: {usuario['nome']}
+    Empresa: {usuario['empresa']}  
+    Cidade: {usuario['cidade']}
+    Departamento: {usuario['departamento']}
+    
+    Seja criativo, use emojis, max 3 parágrafos.
+    """</span>
+    response = model.<span class="c-fn">generate_content</span>(prompt)
+    <span class="c-kw">return</span> response.text
+
+<span class="c-kw">def</span> <span class="c-fn">transformar_usuarios</span>(categorizados: <span class="c-type">dict</span>) -> <span class="c-type">list</span>:
+    <span class="c-str">"""Aplica IA em cada usuário"""</span>
+    resultado = []
+    <span class="c-kw">for</span> dept, usuarios <span class="c-kw">in</span> categorizados.<span class="c-fn">items</span>():
+        <span class="c-kw">for</span> usuario <span class="c-kw">in</span> usuarios:
+            usuario[<span class="c-str">'resumo_ia'</span>] = <span class="c-fn">gerar_resumo</span>(usuario)
+            resultado.<span class="c-fn">append</span>(usuario)
+    <span class="c-kw">return</span> resultado</pre>
+          </div>
+          <div class="code-panel" id="panel-carregamento">
+            <pre class="code-block"><span class="c-comment"># 💾 carregamento.py — Salva em Markdown</span>
+
+<span class="c-kw">from</span> pathlib <span class="c-kw">import</span> Path
+
+<span class="c-kw">def</span> <span class="c-fn">gerar_markdown</span>(usuario: <span class="c-type">dict</span>) -> <span class="c-type">str</span>:
+    <span class="c-str">"""Formata usuário como documento Markdown"""</span>
+    <span class="c-kw">return</span> <span class="c-str">f"""# {usuario['nome']}
+
+## 📋 Informações Básicas
+- **Email**: {usuario['email']}
+- **Cidade**: {usuario['cidade']}
+- **Empresa**: {usuario['empresa']}
+- **Departamento**: {usuario['departamento']}
+
+## 🤖 Resumo Gerado por IA
+{usuario['resumo_ia']}
+
+---
+*Gerado por Pipeline ETL × Gemini AI*
+"""</span>
+
+<span class="c-kw">def</span> <span class="c-fn">carregar_em_markdown</span>(usuarios: <span class="c-type">list</span>):
+    <span class="c-str">"""Salva cada usuário como arquivo .md"""</span>
+    output = Path(<span class="c-str">"resumos_markdown"</span>)
+    output.<span class="c-fn">mkdir</span>(exist_ok=<span class="c-kw">True</span>)
+    
+    <span class="c-kw">for</span> u <span class="c-kw">in</span> usuarios:
+        nome_arquivo = u[<span class="c-str">'nome'</span>].<span class="c-fn">replace</span>(<span class="c-str">" "</span>, <span class="c-str">"_"</span>)
+        arquivo = output / <span class="c-str">f"{nome_arquivo}.md"</span>
+        arquivo.<span class="c-fn">write_text</span>(<span class="c-fn">gerar_markdown</span>(u))
+    
+    print(<span class="c-str">f"[LOAD] {len(usuarios)} arquivos salvos"</span>)</pre>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- TECH STACK -->
+  <section class="tech-section" id="tech">
+    <div class="section-label">
+      <span class="label-num">04</span>
+      <span class="label-line"></span>
+      <span class="label-text">TECNOLOGIAS</span>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-top">
+          <span class="tech-logo">🐍</span>
+          <span class="tech-version">3.10+</span>
+        </div>
+        <div class="tech-name">Python</div>
+        <div class="tech-role">Core Language</div>
+        <div class="tech-bar"><div class="tech-fill" data-w="97"></div></div>
+      </div>
+      <div class="tech-card featured">
+        <div class="tech-card-top">
+          <span class="tech-logo">✨</span>
+          <span class="tech-version">gemini-pro</span>
+        </div>
+        <div class="tech-name">Gemini AI</div>
+        <div class="tech-role">Inteligência & Resumos</div>
+        <div class="tech-bar"><div class="tech-fill" data-w="100"></div></div>
+        <div class="tech-featured-badge">destaque</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-top">
+          <span class="tech-logo">🐼</span>
+          <span class="tech-version">2.x</span>
+        </div>
+        <div class="tech-name">Pandas</div>
+        <div class="tech-role">Data Processing</div>
+        <div class="tech-bar"><div class="tech-fill" data-w="88"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-top">
+          <span class="tech-logo">📝</span>
+          <span class="tech-version">markup</span>
+        </div>
+        <div class="tech-name">Markdown</div>
+        <div class="tech-role">Output Format</div>
+        <div class="tech-bar"><div class="tech-fill" data-w="75"></div></div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-top">
+          <span class="tech-logo">🔐</span>
+          <span class="tech-version">.env</span>
+        </div>
+        <div class="tech-name">dotenv</div>
+        <div class="tech-role">Config Seguro</div>
+        <div class="tech-bar"><div class="tech-fill" data-w="60"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICKSTART -->
+  <section class="setup-section" id="setup">
+    <div class="section-label">
+      <span class="label-num">05</span>
+      <span class="label-line"></span>
+      <span class="label-text">CONFIGURAÇÃO RÁPIDA</span>
+    </div>
+    <h2 class="section-title">Do Zero ao<br><em>Pipeline</em></h2>
+
+    <div class="steps-grid">
+      <div class="step-card" data-step="1">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3 class="step-title">Clonar</h3>
+          <div class="step-terminal">
+            <span class="st-prompt">$</span>
+            <span class="st-cmd">git clone https://github.com/<br>novasentinel-tech/ETL-DIO.git</span>
+            <button class="copy-btn" data-copy="git clone https://github.com/novasentinel-tech/ETL-DIO.git">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="step-card" data-step="2">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3 class="step-title">Instalar Deps</h3>
+          <div class="step-terminal">
+            <span class="st-prompt">$</span>
+            <span class="st-cmd">pip install -r requirements.txt</span>
+            <button class="copy-btn" data-copy="pip install -r requirements.txt">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="step-card" data-step="3">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3 class="step-title">Configurar API Key</h3>
+          <div class="step-terminal">
+            <span class="st-prompt">$</span>
+            <span class="st-cmd">echo "GEMINI_API_KEY=<span class="st-var">sua_chave</span>" > .env</span>
+          </div>
+          <p class="step-note">⚠️ Nunca faça commit do .env</p>
+        </div>
+      </div>
+      <div class="step-card" data-step="4">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3 class="step-title">Executar</h3>
+          <div class="step-terminal">
+            <span class="st-prompt">$</span>
+            <span class="st-cmd">cd src && python iniciador.py</span>
+            <button class="copy-btn" data-copy="cd src && python iniciador.py">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <p class="step-note">⏱ ~5-10 min para 45 usuários</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTPUT PREVIEW -->
+  <section class="output-section" id="output">
+    <div class="section-label">
+      <span class="label-num">06</span>
+      <span class="label-line"></span>
+      <span class="label-text">SAÍDA GERADA</span>
+    </div>
+    <h2 class="section-title">O Resultado<br><em>final</em></h2>
+
+    <div class="output-preview">
+      <div class="output-header">
+        <div class="output-tabs">
+          <span class="out-tab active">📄 Leanne_Graham.md</span>
+          <span class="out-tab">📄 Ervin_Howell.md</span>
+          <span class="out-tab">📄 +43 arquivos...</span>
+        </div>
+      </div>
+      <div class="output-body">
+        <div class="md-preview">
+          <h1 class="md-h1"># Leanne Graham</h1>
+          <h2 class="md-h2">## 📋 Informações Básicas</h2>
+          <div class="md-list">
+            <div class="md-item"><span class="md-bullet">-</span> <span class="md-bold">Email:</span> Sincere@april.biz</div>
+            <div class="md-item"><span class="md-bullet">-</span> <span class="md-bold">Cidade:</span> Gwenborough</div>
+            <div class="md-item"><span class="md-bullet">-</span> <span class="md-bold">Empresa:</span> Romaguera-Crona</div>
+            <div class="md-item"><span class="md-bullet">-</span> <span class="md-bold">Departamento:</span> Engineering</div>
+          </div>
+          <h2 class="md-h2">## 🤖 Resumo Gerado por IA</h2>
+          <div class="md-gemini-block">
+            <div class="gemini-typing-indicator">
+              <div class="gem-orb-small"></div>
+              <span id="geminiTypedText" class="gemini-typed"></span><span class="gemini-cursor">|</span>
+            </div>
+          </div>
+          <div class="md-hr">---</div>
+          <div class="md-footer"><em>*Gerado automaticamente pela pipeline ETL × Gemini AI*</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNINGS -->
+  <section class="learn-section" id="learn">
+    <div class="section-label">
+      <span class="label-num">07</span>
+      <span class="label-line"></span>
+      <span class="label-text">APRENDIZADOS</span>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <div class="learn-icon">🔄</div>
+        <h3>Pipeline de Dados</h3>
+        <p>Arquitetura ETL modular com separação clara de responsabilidades.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">🤖</div>
+        <h3>Integração com IA</h3>
+        <p>Uso prático da API Gemini para geração de conteúdo contextualizado.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">🐍</div>
+        <h3>Python Avançado</h3>
+        <p>Pandas, pathlib, dotenv e boas práticas de estruturação de projetos.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">🔐</div>
+        <h3>Variáveis de Ambiente</h3>
+        <p>Gerenciamento seguro de credenciais e configurações sensíveis.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">📝</div>
+        <h3>Git & GitHub</h3>
+        <p>Versionamento, .gitignore, e boas práticas de colaboração.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">📊</div>
+        <h3>Markdown</h3>
+        <p>Geração programática de documentação rica e estruturada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-label">PROJETO OPEN SOURCE</div>
+      <h2 class="cta-title">Ver o<br>Repositório</h2>
+      <p class="cta-desc">Código aberto, bem documentado, pronto para estender.</p>
+      <div class="cta-buttons">
+        <a href="https://github.com/novasentinel-tech/ETL-CURSO-ENGENHARIA-DE-DADOS-DIO" target="_blank" class="cta-primary large">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="index.html#projects" class="cta-secondary large">← Todos os Projetos</a>
+      </div>
+    </div>
+    <div class="cta-visual">
+      <div class="cta-orb"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo"><span class="logo-bracket">&lt;</span><span class="logo-text">DS</span><span class="logo-bracket">/&gt;</span></div>
-        <p class="footer-text">Transformando dados em inteligência. Construído com paixão por Data Science.</p>
-        <div class="footer-socials">
-          <a href="https://github.com/novasentinel-tech" class="footer-social" aria-label="GitHub" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-          <a href="https://www.linkedin.com/in/joão-pedro-rodrigues-viana-8738142a8" class="footer-social" aria-label="LinkedIn" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        </div>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">
+        <span>&lt;</span>DS<span>/&gt;</span>
+      </a>
+      <p class="footer-copy">&copy; 2026 João Pedro Rodrigues Viana</p>
+      <div class="footer-links">
+        <a href="https://github.com/novasentinel-tech/ETL-CURSO-ENGENHARIA-DE-DADOS-DIO" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/joão-pedro-rodrigues-viana-8738142a8" target="_blank">LinkedIn</a>
       </div>
-      <div class="footer-bottom"><p>&copy; 2026 João Pedro Rodrigues Viana. Todos os direitos reservados.</p></div>
     </div>
   </footer>
-  <script src="main.js"></script>
+
+  <script src="etl-script.js"></script>
 </body>
 </html>
